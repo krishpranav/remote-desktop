@@ -11,8 +11,21 @@ on:
 
 jobs:
 
-  build:
+  build-linux:
     runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Set up Go
+      uses: actions/setup-go@v3
+      with:
+        go-version: 1.19
+
+    - name: Go Module
+      run: go mod tidy
+
+  build-macos:
+    runs-on: macos-latest
     steps:
     - uses: actions/checkout@v3
 
